@@ -9,7 +9,7 @@ usage: aes-ctr.py [-h] [-d] File/text
 Encryptor/Decryptor AES-CTR
 
 positional arguments:
-  File/text      File or text to encrypt (or decrypt if -d
+  File/text      File or text to encrypt/decrypt
 
 optional arguments:
   -h, --help     show this help message and exit
