@@ -1,8 +1,6 @@
 # AES-CTR
 
 Simple python code to encrypt/decrypt file or text using AES-CTR mode.
-For encrypting text, 2 encrypted files, encrypted.bin and encrypted.hex, will be generated. 
-For encrypting file, filename.bin and filename.hex 
 The key used for encrypting will be display in the console.
 
 Example:
