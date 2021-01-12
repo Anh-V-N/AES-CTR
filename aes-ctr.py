@@ -12,18 +12,7 @@ def Encryptor(plaintext,filename="encrypted"):
     # ENCRYPTOR
     # Generate Key and IV for encrypting
     # Encrypt data and write IV + cipher to a txt file seperated by ":"
-
-    manual_key = input("Do you want to manually enter a passphrase?[y/N] ")
-    if manual_key.lower() == 'y':
-        key = input("Enter your key: ")
-        key = key.encode()
-        m = hashlib.sha256()
-        m.update(key)
-        key = m.digest()
-    else:
-        print("A key will now be automatically generated.")     
-        key = os.urandom(32)
-
+    key = os.urandom(32)
     IV = os.urandom(16)
     context = Cipher(algorithms.AES(key),modes.CTR(IV),backend=default_backend())
     cipher = context.encryptor().update(plaintext) + context.encryptor().finalize()
@@ -78,8 +67,9 @@ def Decryptor(encrypted):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Encryptor/Decryptor AES-CTR")
     parser.add_argument('-d','--decrypt',help='Decrypt mode',action='store_true')
-    parser.add_argument('File/text',help = 'File or text to encrypt (or decrypt if -d')
+    parser.add_argument('File/text',help = 'File or text to encrypt/decrypt')
     args = parser.parse_args()
+
     if args.decrypt:
         Decryptor(sys.argv[2])
     else:
